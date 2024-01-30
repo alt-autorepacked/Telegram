@@ -9,7 +9,7 @@ _package="Telegram"
 
 _download() {
     real_download_url=$(epm tool eget --get-real-url $url)
-    epm pack $_package $real_download_url
+    epm -y pack $_package $real_download_url
 }
 
 url=$(epm tool eget --list https://github.com/telegramdesktop/tdesktop/releases/latest "tsetup.*.tar.xz" | grep -v beta | head -1)
