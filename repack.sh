@@ -9,12 +9,12 @@ _package="Telegram"
 
 _download() {
     real_download_url=$(epm tool eget --get-real-url $url)
-    epm -y repack $real_download_url
+    epm pack $_package $real_download_url
 }
 
 url=$(epm tool eget --list https://github.com/telegramdesktop/tdesktop/releases/latest "tsetup.*.tar.xz" | grep -v beta | head -1)
 
-download_version=$(echo $url | grep -oP $_version_grep)
+download_version=$(echo $url | grep -oP $_version_grep | head -1)
 remote_version=$(_check_version_from_remote)
 
 if [ "$remote_version" != "$download_version" ]; then
